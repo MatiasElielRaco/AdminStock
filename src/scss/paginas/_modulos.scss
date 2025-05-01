@@ -1,0 +1,65 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.modulos {
+    padding: 4rem 2rem;
+    max-width: 1000px; // más estrecho para acercar los módulos
+    margin: 0 auto;
+  
+    &__titulo {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 2rem;
+    }
+  
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
+  .modulo {
+    background-color: v.$blanco;
+    border: 1px solid v.$gris-oscuro;
+    border-radius: 1rem;
+    padding: 1.5rem 1rem;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+    &:hover {
+        cursor: pointer;
+        transform: translateY(-4px);
+        @include m.shadow;
+    }
+  
+    &__icono {
+      margin-bottom: 1rem;
+  
+      img {
+        width: 64px;
+        height: 64px;
+      }
+    }
+  
+    &__nombre {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+    }
+  
+    &__descripcion {
+      font-size: 1.5rem;
+      color: #6b7280;
+    }
+  }
+  
+  
+  
+  

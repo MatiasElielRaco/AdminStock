@@ -1,0 +1,28 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.header {
+    width: 100%;
+    background-color: v.$gris-claro;
+
+    &__contenedor {
+        @include m.contenedor;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        flex-direction: column;
+
+        padding: 4rem 0;
+        
+        @include m.tablet {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0;
+        }
+
+        img {
+            width: 25rem;
+        }
+    }
+}

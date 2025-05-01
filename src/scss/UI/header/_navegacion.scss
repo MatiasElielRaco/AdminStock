@@ -1,0 +1,11 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.navegacion {
+    display: flex;
+    gap: 2rem;
+
+    &__enlace {
+        @include m.enlace(v.$negro);
+    }
+}

@@ -143,11 +143,14 @@
  
 }
 
-@mixin enlace{
+@mixin enlace($color){
     all: unset;
-    color: v.$blanco;
-    font-size: 1.4rem;
+    color: $color;
+    font-size: 1.8rem;
     text-transform: uppercase;
+    transition-property: color;
+    transition-timing-function: ease-in;
+    transition-duration: .3s;
     font-weight: v.$bold;
         &:hover {
             cursor: pointer;
