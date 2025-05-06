@@ -83,7 +83,7 @@ class AuthController {
                     Usuario::setAlerta('error', 'El Usuario ya esta registrado');
                     $alertas = Usuario::getAlertas();
                 } else {
-                    // Hashear el password
+                    // Hashear La contraseña
                     $usuario->hashPassword();
 
                     // Eliminar password2
@@ -109,7 +109,7 @@ class AuthController {
 
         // Render a la vista
         $router->render('auth/registro', [
-            'titulo' => 'Crea tu cuenta en DevWebcamp',
+            'titulo' => 'Registrate en AdminStock',
             'usuario' => $usuario, 
             'alertas' => $alertas
         ]);
@@ -182,7 +182,7 @@ class AuthController {
             // Añadir el nuevo password
             $usuario->sincronizar($_POST);
 
-            // Validar el password
+            // Validar La contraseña
             $alertas = $usuario->validarPassword();
 
             if(empty($alertas)) {
@@ -246,7 +246,7 @@ class AuthController {
      
 
         $router->render('auth/confirmar', [
-            'titulo' => 'Confirma tu cuenta DevWebcamp',
+            'titulo' => 'Confirma tu cuenta AdminStock',
             'alertas' => Usuario::getAlertas()
         ]);
     }

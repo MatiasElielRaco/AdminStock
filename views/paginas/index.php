@@ -3,7 +3,7 @@
         <div class="main__contenido">
             <h2 class="main__contenido--titulo">Administra tu inventario <br> de forma ágil y segura</h2>
             <p class="main__contenido--texto">Accede al sistema para controlar el inventario <br> de tu negocio</p>
-            <a href="#" class="main__contenido--boton">Ingresar</a>
+            <a href="/registro" class="main__contenido--boton">Registrate</a>
         </div>
     
         <picture>
