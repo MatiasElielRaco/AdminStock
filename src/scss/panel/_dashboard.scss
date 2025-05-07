@@ -1,0 +1,88 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.body {
+    background-color: v.$gris-claro;
+}
+
+.dashboard {
+    @include m.contenedor;
+    padding: 2rem;
+
+    &__flex {
+        display: flex;
+        min-height: 100vh;
+    }
+
+    &__stats {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+
+        &--stat {
+            flex: 1;
+            min-width: 200px;
+            padding: 1.5rem;
+            background: v.$blanco;
+            border-radius: 12px;
+            @include m.shadow;
+            text-align: center;
+          
+            h3 {
+              margin-bottom: 0.3rem;
+              font-weight: v.$black;
+            }
+          
+            p {
+              color: v.$negro;
+            }
+        }
+
+        &--stat-alert h3{
+            color: v.$rojo;
+        }
+
+        &--stat-warning h3{
+            color: v.$amarillo;
+        }
+    }
+
+    &__tabla {
+        background: v.$blanco;
+        border-radius: 1.2rem;
+        padding: 1.5rem;
+        @include m.shadow;
+
+        h2 {
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 2.5rem;
+
+            th {
+                padding: 0.75rem;
+                text-align: left;
+                color: v.$negro;
+                font-weight: v.$bold;
+                border-bottom: 1px solid v.$gris-claro;
+                font-size: 2rem;
+            }
+
+            td {
+                font-size: 1.8rem;
+                padding: 1rem;
+                color: v.$negro;
+            }
+
+            tr {
+                border-top: 1px solid #f3f4f6;
+            }
+        }
+    }
+
+}

@@ -8,8 +8,14 @@
 
         <nav class="navegacion">
             <a href="/" class="navegacion__enlace">Home</a>
-            <a href="#" class="navegacion__enlace">Dashboard</a>
-            <a href="/login" class="navegacion__enlace">Login</a>
+            <?php if(is_auth()) { ?>
+                <a href="/dashboard" class="navegacion__enlace">Dashboard</a>
+                <form method="POST" action="/logout" class="dashboard__form">
+                    <input type="submit" value="Cerrar Sesión" class="navegacion__enlace">
+                </form>
+            <?php } else { ?>
+                <a href="/login" class="navegacion__enlace">Login</a>
+            <?php } ?>
         </nav>
     </div>
 </header>

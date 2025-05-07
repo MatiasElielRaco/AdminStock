@@ -4,7 +4,10 @@ require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
 use Controllers\AuthController;
+use Controllers\CategoriasController;
+use Controllers\DashboardController;
 use Controllers\PaginasController;
+use Controllers\ProductosController;
 
 $router = new Router();
 
@@ -30,8 +33,17 @@ $router->post('/reestablecer', [AuthController::class, 'reestablecer']);
 $router->get('/mensaje', [AuthController::class, 'mensaje']);
 $router->get('/confirmar-cuenta', [AuthController::class, 'confirmar']);
 
-// Pagina de error
+// Área Pública
 $router->get('/', [PaginasController::class, 'index']);
+
+// Páginas Dashboard
+$router->get('/dashboard', [DashboardController::class, 'index']);
+$router->get('/dashboard/producto', [ProductosController::class, 'productos']);
+$router->post('/dashboard/producto', [ProductosController::class, 'productos']);
+$router->get('/dashboard/categoria', [CategoriasController::class, 'categorias']);
+$router->post('/dashboard/categoria', [CategoriasController::class, 'categorias']);
+
+// Pagina de error
 $router->get('/404', [PaginasController::class, 'error']);
 
 $router->comprobarRutas();

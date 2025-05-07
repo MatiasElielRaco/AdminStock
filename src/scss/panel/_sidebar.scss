@@ -1,0 +1,55 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.sidebar {
+    background: linear-gradient(to bottom, #1f2937, #111827);
+    color: v.$blanco;
+    width: 25rem;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    &__logo {
+        @include m.logo();
+        transition: color 0.5s ease;
+
+        &:hover {
+            color: v.$gris;
+        }
+    }
+
+
+    &__nav {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        &--contenedor {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem .5rem;
+            border-radius: 0.5rem;
+            transition: background 0.2s;
+
+            &:hover, 
+            &__active {
+                background: #374151;
+                color: #fff;
+                cursor: pointer;
+            }
+        }
+
+        img {
+            width: 3rem;
+        }
+    }
+
+    &__link {
+        color: #d1d5db;
+        text-decoration: none;
+        font-size: 2rem;
+    }
+
+}
