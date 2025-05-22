@@ -1,0 +1,56 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.categorias {
+  margin-top: 7rem;
+
+  &__heading {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__lista {
+    @include m.contenedor;
+    @include m.grid(1,1rem);
+    @include m.tablet() {
+        @include m.grid(2,1rem);
+    }
+    @include m.desktop() {
+        @include m.grid(3,1rem);
+    }
+    @include m.xl_desktop() {
+        @include m.grid(4,1rem);
+    }
+  }
+}
+
+.categoria {
+    @include m.shadow;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 2rem;
+    background-color: v.$blanco;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid v.$gris-claro;
+
+    &__nombre {
+        font-weight: 500;
+        color: v.$negro;
+    }
+
+    &__eliminar {
+        background-color: v.$rojo;
+        color: v.$blanco;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        font-size: 1.6rem;
+        cursor: pointer;
+
+        &:hover {
+        background-color: v.$rojo;
+        }
+    }
+}

@@ -5,6 +5,14 @@
     display: flex;
     flex-direction: column;
 
+    &__productos {
+        @include m.contenedor-sm;
+        @include m.shadow;
+        padding: 3rem 2rem;
+        border-radius: 1rem;
+        background-color: v.$blanco;
+    }
+
     &__fieldset {
         border: none;
         margin-top: 1rem;

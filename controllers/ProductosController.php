@@ -6,15 +6,15 @@ use MVC\Router;
 
 class ProductosController {
 
-    public static function index(Router $router) {
+    public static function productos(Router $router) {
 
         if(!is_auth()) {
             header("location: /login");
         }
 
 
-        $router->render("dashboard/index", [
-            "titulo" => "Dashboard"
+        $router->render("panel/productos", [
+            "titulo" => "Productos"
         ]);
     }
 

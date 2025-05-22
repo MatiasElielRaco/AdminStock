@@ -38,10 +38,11 @@ $router->get('/', [PaginasController::class, 'index']);
 
 // Páginas Dashboard
 $router->get('/dashboard', [DashboardController::class, 'index']);
-$router->get('/dashboard/producto', [ProductosController::class, 'productos']);
-$router->post('/dashboard/producto', [ProductosController::class, 'productos']);
-$router->get('/dashboard/categoria', [CategoriasController::class, 'categorias']);
-$router->post('/dashboard/categoria', [CategoriasController::class, 'categorias']);
+$router->get('/dashboard/productos', [ProductosController::class, 'productos']);
+$router->post('/dashboard/productos', [ProductosController::class, 'crear']);
+$router->get('/dashboard/categorias', [CategoriasController::class, 'categorias']);
+$router->post('/dashboard/categorias/crear', [CategoriasController::class, 'crear']);
+$router->post('/dashboard/categorias/eliminar', [CategoriasController::class, 'eliminar']);
 
 // Pagina de error
 $router->get('/404', [PaginasController::class, 'error']);
