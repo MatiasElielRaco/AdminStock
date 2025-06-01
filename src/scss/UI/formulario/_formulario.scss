@@ -47,6 +47,10 @@
         &--file {
             border: none;
         }
+
+        &.error {
+            border: 1px solid v.$rojo;
+        }
     }
     
     &__radio {

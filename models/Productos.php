@@ -4,7 +4,14 @@ namespace Model;
 
 class Productos extends ActiveRecord {
     protected static $tabla = 'productos';
-    protected static $columnasDB = ['id', 'nombre', 'cantidad', 'precio', 'categoria_id'];
+    protected static $columnasDB = ['id', 'nombre', 'cantidad', 'precio', 'categoria', "usuarios_id"];
+
+    public $id;
+    public $nombre;
+    public $cantidad;
+    public $precio;
+    public $categoria;
+    public $usuarios_id;
     
     public function __construct($args = [])
     {
@@ -12,10 +19,11 @@ class Productos extends ActiveRecord {
         $this->nombre = $args['nombre'] ?? '';
         $this->cantidad = $args['cantidad'] ?? '';
         $this->precio = $args['precio'] ?? '';
-        $this->categoria_id = $args['categoria_id'] ?? 0;
+        $this->categoria = $args['categoria'] ?? "";
+        $this->usuarios_id = $args['usuarios_id'] ?? 0;
     }
 
-    // Validar el Login de Productos
+    // Validar Productos
     public function validarProducto() {
         if(!$this->nombre) {
             self::$alertas['error'][] = 'El nombre del Producto es Obligatorio';
@@ -26,10 +34,9 @@ class Productos extends ActiveRecord {
         if(!$this->precio) {
             self::$alertas['error'][] = 'Coloca un Precio Válido';
         }
-        if(!$this->categoria_id) {
+        if(!$this->categoria) {
             self::$alertas['error'][] = 'Coloca una Categoria Válida';
         }
         return self::$alertas;
-
     }
 }

@@ -18,16 +18,21 @@ import Swal from "sweetalert2";
 
 
         async function guardarCategoria() {
-            const categoriaNombre = document.querySelector("#categoria").value.trim();
+            const categoriaNombre = document.querySelector("#categoria");
             
-            if(!categoriaNombre) {
-                console.log("nadita");
+            if (!categoriaNombre.value.trim()) {
+                const error = document.getElementById("errorCategoria");
+                error.textContent = "El campo categoría no puede estar vacío.";
+                error.style.display = "block";
+                categoriaNombre.classList.add("error");
 
                 return;
             }
 
+            categoriaNombre.classList.remove("error");
+
             const datos =  new FormData(); 
-            datos.append("categoria", categoriaNombre);
+            datos.append("categoria", categoriaNombre.value);
             
             const url = "/dashboard/categorias/crear";
             const respuesta = await fetch(url, {
@@ -75,8 +80,10 @@ import Swal from "sweetalert2";
                             text: "La categoria y sus productos fueron eliminados",
                             icon: "success"
                             });
-
-                            location.reload();
+                            
+                            setTimeout(() => {
+                                location.reload();
+                            }, 1200);
                         }
                     }
                 });

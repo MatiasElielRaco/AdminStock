@@ -5,6 +5,10 @@ namespace Model;
 class Categorias extends ActiveRecord {
     protected static $tabla = 'categorias';
     protected static $columnasDB = ['id', 'categoria', 'usuarios_id'];
+
+    public $id;
+    public $categoria;
+    public $usuarios_id;
     
     public function __construct($args = [])
     {

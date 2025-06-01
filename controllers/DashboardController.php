@@ -2,6 +2,8 @@
 
 namespace Controllers;
 
+use Model\Categorias;
+use Model\Productos;
 use MVC\Router;
 
 class DashboardController {
@@ -12,9 +14,15 @@ class DashboardController {
             header("location: /login");
         }
 
+        $id = $_SESSION["id"];
+
+        $productos = Productos::whereAll("usuarios_id", $id);
+        $categorias = Categorias::whereAll("usuarios_id", $id);
 
         $router->render("panel/dashboard", [
-            "titulo" => "Dashboard"
+            "titulo" => "Dashboard",
+            "productos" => $productos,
+            "categorias" => $categorias
         ]);
     }
 

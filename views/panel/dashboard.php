@@ -23,7 +23,7 @@
     </div>
     
     <!-- Tabla -->
-    <div class="dashboard__tabla">
+    <div class="tabla">
       <h2>Productos</h2>
       <table>
         <thead>
@@ -32,33 +32,25 @@
             <th>Categoría</th>
             <th>Stock</th>
             <th>Precio</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Laptop</td>
-            <td>Electrónica</td>
-            <td>300</td>
-            <td>$1000</td>
-          </tr>
-          <tr>
-            <td>Smartphone</td>
-            <td>Electrónica</td>
-            <td>20</td>
-            <td>$800</td>
-          </tr>
-          <tr>
-            <td>Desk Chair</td>
-            <td>Muebles</td>
-            <td>450</td>
-            <td>$150</td>
-          </tr>
-          <tr>
-            <td>Coffee Table</td>
-            <td>Electrónica</td>
-            <td>0</td>
-            <td>$300</td>
-          </tr>
+          <?php foreach($productos as $producto) : ?>
+            <tr>
+              <td><?php echo($producto->nombre); ?></td>
+              <td><?php echo($producto->categoria); ?></td>
+              <td><?php echo($producto->cantidad); ?></td>
+              <td>$<?php echo intval($producto->precio); ?></td>
+              <td class="tabla__acciones">
+                <a class="tabla__accion tabla__accion--editar" href="/dashboard/productos/editar?id=<?php echo($producto->id)?>">Editar</a>
+                <form method="POST" action="/dashboard/productos/eliminar">
+                    <input type="hidden" name="id" value="<?php echo($producto->id); ?>">
+                    <button class="tabla__accion tabla__accion--eliminar" type="submit">Eliminar</button>
+                </form>
+              </td>
+            </tr>
+          <?php endforeach; ?>
         </tbody>
       </table>
     </div>

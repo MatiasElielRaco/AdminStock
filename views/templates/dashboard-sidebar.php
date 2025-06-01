@@ -9,7 +9,7 @@
         </div>
         <div class="sidebar__nav--contenedor">
             <img src="/build/img/product.svg" alt="logo producto">
-            <a href="/dashboard/productos" class="sidebar__link">Productos</a>          
+            <a href="/dashboard/productos/crear" class="sidebar__link">Productos</a>          
         </div>
         <div class="sidebar__nav--contenedor">
             <img src="/build/img/category.svg" alt="logo categorias">

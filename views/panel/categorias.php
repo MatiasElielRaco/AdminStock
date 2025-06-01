@@ -9,6 +9,7 @@
   <form class="formulario formulario__productos">
     <div class="formulario__campo">
       <label for="categoria" class="formulario__label">Nombre de la Categoría</label>
+      <small id="errorCategoria" style="color: red; display: none;"></small>
       <input type="text" class="formulario__input" name="categoria" id="categoria" placeholder="Ej: Electrónica">
     </div>
     <button type="button" id="boton-categoria" class="formulario__submit">Guardar Categoria</button>
