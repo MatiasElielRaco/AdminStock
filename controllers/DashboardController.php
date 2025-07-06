@@ -22,6 +22,8 @@ class DashboardController {
             "max" => $_GET["max"],
         ];
 
+        
+
         $pagina_actual = $_GET["page"];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
 
