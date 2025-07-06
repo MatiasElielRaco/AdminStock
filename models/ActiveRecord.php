@@ -125,6 +125,12 @@ class ActiveRecord {
     }
 
     // Paginar los registros
+    public static function paginarWhere($por_pagina, $offset, $columna, $valor) {
+        $query = "SELECT * FROM " . static::$tabla . " WHERE {$columna} = '{$valor}' ORDER BY id DESC LIMIT {$por_pagina} OFFSET {$offset}" ;
+        $resultado = self::consultarSQL($query);
+        return  $resultado;
+    }
+
     public static function paginar($por_pagina, $offset) {
         $query = "SELECT * FROM " . static::$tabla . " ORDER BY id DESC LIMIT {$por_pagina} OFFSET {$offset}" ;
         $resultado = self::consultarSQL($query);
@@ -172,17 +178,16 @@ class ActiveRecord {
         return $resultado;
     }
 
-    // Traer un total de registros
-    public static function total($columna = "", $valor = "") {
+    public static function total($condicion = "") {
         $query = "SELECT COUNT(*) FROM " . static::$tabla;
-        if($columna) {
-            $query .= " WHERE {$columna} = {$valor}";
+        if ($condicion) {
+            $query .= " WHERE {$condicion}";
         }
         $resultado = self::$db->query($query);
         $total = $resultado->fetch_array();
-
-        return array_shift ($total);
+        return array_shift($total);
     }
+
 
     // Total de registros con un Array Where
     public static function totalArray($array = []) {
