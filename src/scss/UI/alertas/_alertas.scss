@@ -1,5 +1,6 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
+@use "sass:color";
 
 .alerta {
     @include m.contenedor-sm;
@@ -10,13 +11,13 @@
     font-weight: v.$black;
 
     &__error {
-        background-color: lighten(v.$rojo, 45);
+        background-color: color.adjust(v.$rojo, $lightness: 45%);
         border-left: .5rem solid v.$rojo;
         color: v.$rojo;
     }
 
     &__exito {
-        background-color: lighten(v.$verde, 45);
+        background-color: color.adjust(v.$verde, $lightness: 45%);
         border-left: .5rem solid v.$verde;
         color: v.$verde;
     } 

@@ -12,7 +12,10 @@
 
     &__logo {
         @include m.logo();
-        transition: color 0.5s ease;
+        
+        & {
+            transition: color 0.5s ease;
+        }
 
         &:hover {
             color: v.$gris;

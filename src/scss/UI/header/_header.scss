@@ -5,15 +5,19 @@
     width: 100%;
     background-color: v.$gris-claro;
 
-    &__contenedor {
-        @include m.contenedor;
-        display: flex;
-        align-items: center;
-        gap: 2rem;
-        flex-direction: column;
-
-        padding: 4rem 0;
-        
+    &__contenedor {        
+        & {
+            @include m.contenedor;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-direction: column;
+            padding: 1rem 0;
+    
+            img {
+                width: 25rem;
+            }
+            
         @include m.tablet {
             flex-direction: row;
             align-items: center;
@@ -21,8 +25,6 @@
             gap: 0;
         }
 
-        img {
-            width: 25rem;
         }
     }
 }

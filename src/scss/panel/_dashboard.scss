@@ -1,5 +1,6 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
+@use "sass:color";
 
 .body {
     background-color: v.$gris-claro;
@@ -68,7 +69,7 @@
         font-size: 2.5rem;
 
         thead {
-            background: linear-gradient(to right, #1f2937, lighten(#111827, 20%));
+            background: linear-gradient(to right, #1f2937, color.adjust(#111827, $lightness: 20%));
         }
 
         th {
