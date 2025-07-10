@@ -124,6 +124,56 @@ class ActiveRecord {
         return $resultado;
     }
 
+    // Buscar con filtros
+    public static function filtrar($filtros = []) {
+        $condiciones = [];
+        
+        if (!empty($filtros["buscar"])) {
+            $buscar = $filtros["buscar"];
+            $condiciones[] = "nombre LIKE '%{$buscar}%'";
+        }
+
+        if (!empty($filtros["categoria"])) {
+            $categoria = $filtros["categoria"];
+            $condiciones[] = "categoria = '{$categoria}'";
+        }
+
+        if (isset($filtros["stock"])) {
+            if ($filtros["stock"] === 'bajo') {
+                $condiciones[] = "cantidad < 10";
+            } elseif ($filtros["stock"] === 'sin') {
+                $condiciones[] = "cantidad = 0";
+            } elseif ($filtros["stock"] === 'disponible') {
+                $condiciones[] = "cantidad > 10";
+            }
+        }
+
+        if (!empty($filtros["min"])) {
+            $min = $filtros["min"];
+            $condiciones[] = "precio >= '{$min}'";
+        }
+
+        if (!empty($filtros["max"])) {
+            $max = $filtros["max"];
+            $condiciones[] = "precio <= '{$max}'";
+        }
+
+        if (!empty($filtros["usuarios_id"])) {
+            $usuario = ["usuarios_id"];
+            $condiciones[] = "usuarios_id = '{$usuario}'";
+        }
+
+        $query = "SELECT * FROM " . static::$tabla;
+        if (!empty($condiciones)) {
+            $query .= " WHERE " . implode(' AND ', $condiciones);
+        }
+        $query .= " ORDER BY id DESC";
+
+
+        return self::consultarSQL($query);
+    }
+
+
     // Paginar los registros
     public static function paginarWhere($por_pagina, $offset, $columna, $valor) {
         $query = "SELECT * FROM " . static::$tabla . " WHERE {$columna} = '{$valor}' ORDER BY id DESC LIMIT {$por_pagina} OFFSET {$offset}" ;

@@ -14,15 +14,29 @@ class DashboardController {
     
         $id = $_SESSION["id"];
 
-        $filtros = [
-            "busqueda" => $_GET["buscar"],
-            "categoria" => $_GET["categoria"],
-            "stock" => $_GET["stock"],
-            "min" => $_GET["min"],
-            "max" => $_GET["max"],
-        ];
+        if($_GET["buscar"] || $_GET["categoria"] || $_GET["stock"] || $_GET["min"] || $_GET["max"]) {
+            
+            $filtros = [];
 
-        
+            if(!empty($_GET["buscar"])) {
+                $filtros["buscar"] = $_GET["buscar"];
+            }
+            if(!empty($_GET["categoria"])) {
+                $filtros["categoria"] = $_GET["categoria"];
+            }
+            if(!empty($_GET["stock"])) {
+                $filtros["stock"] = $_GET["stock"];
+            }
+            if(!empty($_GET["min"])) {
+                $filtros["min"] = $_GET["min"];
+            }
+            if(!empty($_GET["max"])) {
+                $filtros["max"] = $_GET["max"];
+            }
+
+            $filtrar = Productos::filtrar($filtros);
+            debuguear($filtrar);
+        }
 
         $pagina_actual = $_GET["page"];
         $pagina_actual = filter_var($pagina_actual, FILTER_VALIDATE_INT);
@@ -39,7 +53,7 @@ class DashboardController {
         $categorias = Categorias::whereAll("usuarios_id", $id);
 
         $disponible = Productos::total("usuarios_id = {$id} AND cantidad > 20");
-        $bajo = Productos::total("usuarios_id = {$id} AND cantidad > 10");
+        $bajo = Productos::total("usuarios_id = {$id} AND cantidad <= 10");
         $sin = Productos::total("usuarios_id = {$id} AND cantidad = 0");
 
         $router->render("panel/dashboard", [
